@@ -3,25 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon - San Diego Soccer Activities</title>
-    <meta name="description" content="Stay tuned for the best soccer activities in San Diego. Soccer.nepaliboy.com is coming soon!">
+    <title>Soccer.nepaliboy.com - Your Daily Soccer Hub</title>
+    <meta name="description" content="Stay updated with the latest soccer news and community pictures.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="ball-container"></div>
-    
-    <main class="content">
-        <div class="glass-card">
-            <h1 class="title">Coming Soon</h1>
-            <p class="subtitle">San Diego Soccer Activities</p>
-            <div class="divider"></div>
-            <p class="description">We are building something amazing for the soccer community in San Diego. Get ready to play!</p>
-            <div class="domain-tag">soccer.nepaliboy.com</div>
-        </div>
+    <header>
+        <div class="logo">SOCCER.NEPALIBOY</div>
+        <div class="domain-tag">San Diego, CA</div>
+    </header>
+
+    <main class="container">
+        <!-- Column 1: Recent News -->
+        <section class="column">
+            <h2 class="column-title">Recent News</h2>
+            <div id="news-list" class="news-list">
+                <!-- News items will be injected by JS -->
+                <div class="news-card">
+                    <div class="news-date">APR 26, 2026</div>
+                    <div class="news-headline">Champions League Semi-Finals: Predicting the Final Two</div>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">APR 25, 2026</div>
+                    <div class="news-headline">Transfer Rumors: Top Strikers on the Move this Summer</div>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">APR 24, 2026</div>
+                    <div class="news-headline">New Training Facility Unveiled for Local Youth Academy</div>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">APR 23, 2026</div>
+                    <div class="news-headline">Analyzing the Impact of VAR in Recent League Matches</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Column 2: Picture of the Week -->
+        <section class="column">
+            <h2 class="column-title">Picture of the Week</h2>
+            <div class="featured-section">
+                <div class="picture-of-the-week-container">
+                    <img id="featured-img" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=1200" alt="Picture of the Week" class="featured-img">
+                    <div class="featured-overlay">
+                        <span class="featured-label">Featured Shot</span>
+                        <h3 class="featured-title">Goal of the Season Contender</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Column 3: Recent Thumbnails & Upload -->
+        <section class="column">
+            <h2 class="column-title">Recent Gallery</h2>
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Thumbnails will be injected by JS -->
+                <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&q=80&w=400" alt="Soccer 1" class="thumb">
+                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=400" alt="Soccer 2" class="thumb">
+                <img src="https://images.unsplash.com/photo-1510567198184-c748466c1445?auto=format&fit=crop&q=80&w=400" alt="Soccer 3" class="thumb">
+                <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?auto=format&fit=crop&q=80&w=400" alt="Soccer 4" class="thumb">
+            </div>
+            
+            <div class="upload-section">
+                <button id="upload-trigger" class="btn-upload">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                    </svg>
+                    Upload Soccer Picture
+                </button>
+            </div>
+        </section>
     </main>
+
+    <!-- Verification Modal -->
+    <div id="verify-modal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-title">Human Verification</h3>
+            <p class="modal-desc">Please slide to unlock the upload feature.</p>
+            
+            <div id="verify-container" class="verify-container">
+                <div class="verify-fill"></div>
+                <div class="verify-text">Slide to verify</div>
+                <div id="verify-handle" class="verify-handle"></div>
+            </div>
+            
+            <input type="file" id="file-input" hidden accept="image/*">
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

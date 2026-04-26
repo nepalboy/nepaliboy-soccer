@@ -1,53 +1,118 @@
-const container = document.getElementById('ball-container');
-const ballCount = 15;
-const balls = [];
+document.addEventListener('DOMContentLoaded', () => {
+    const uploadTrigger = document.getElementById('upload-trigger');
+    const verifyModal = document.getElementById('verify-modal');
+    const verifyHandle = document.getElementById('verify-handle');
+    const verifyContainer = document.getElementById('verify-container');
+    const fileInput = document.getElementById('file-input');
+    const galleryGrid = document.getElementById('gallery-grid');
 
-class Ball {
-    constructor() {
-        this.element = document.createElement('div');
-        this.element.className = 'soccer-ball';
-        container.appendChild(this.element);
+    let isDragging = false;
+    let startX = 0;
+    let containerWidth = verifyContainer.offsetWidth;
+    let handleWidth = verifyHandle.offsetWidth;
+    let maxDistance = containerWidth - handleWidth - 10; // 5px padding on each side
 
-        this.size = Math.random() * 40 + 40;
-        this.element.style.width = `${this.size}px`;
-        this.element.style.height = `${this.size}px`;
+    // --- Anti-Bot Verification Logic ---
 
-        this.x = Math.random() * window.innerWidth;
-        this.y = Math.random() * window.innerHeight;
+    uploadTrigger.addEventListener('click', () => {
+        verifyModal.style.display = 'flex';
+        resetSlider();
+    });
+
+    verifyHandle.addEventListener('mousedown', startDrag);
+    verifyHandle.addEventListener('touchstart', startDrag);
+
+    window.addEventListener('mousemove', drag);
+    window.addEventListener('touchmove', drag);
+
+    window.addEventListener('mouseup', stopDrag);
+    window.addEventListener('touchend', stopDrag);
+
+    function startDrag(e) {
+        isDragging = true;
+        startX = (e.type === 'mousedown') ? e.clientX : e.touches[0].clientX;
+        verifyHandle.style.transition = 'none';
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
         
-        this.vx = (Math.random() - 0.5) * 2;
-        this.vy = (Math.random() - 0.5) * 2;
-        this.rotation = Math.random() * 360;
-        this.rotationSpeed = (Math.random() - 0.5) * 5;
+        const currentX = (e.type === 'mousemove') ? e.clientX : e.touches[0].clientX;
+        let delta = currentX - startX;
+        
+        if (delta < 0) delta = 0;
+        if (delta > maxDistance) delta = maxDistance;
 
-        this.update();
+        verifyHandle.style.left = (delta + 5) + 'px';
+        
+        // Success condition
+        if (delta >= maxDistance - 2) {
+            handleSuccess();
+        }
     }
 
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.rotation += this.rotationSpeed;
-
-        if (this.x < -this.size) this.x = window.innerWidth;
-        if (this.x > window.innerWidth) this.x = -this.size;
-        if (this.y < -this.size) this.y = window.innerHeight;
-        if (this.y > window.innerHeight) this.y = -this.size;
-
-        this.element.style.transform = `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`;
+    function stopDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const currentLeft = parseInt(verifyHandle.style.left);
+        if (currentLeft < maxDistance) {
+            resetSlider();
+        }
     }
-}
 
-for (let i = 0; i < ballCount; i++) {
-    balls.push(new Ball());
-}
+    function resetSlider() {
+        verifyHandle.style.transition = 'left 0.3s ease';
+        verifyHandle.style.left = '5px';
+    }
 
-function animate() {
-    balls.forEach(ball => ball.update());
-    requestAnimationFrame(animate);
-}
+    function handleSuccess() {
+        isDragging = false;
+        verifyModal.style.display = 'none';
+        fileInput.click(); // Trigger file selection
+    }
 
-animate();
+    // --- Mock Upload Logic ---
 
-window.addEventListener('resize', () => {
-    // Optional: Reset positions on resize
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const imgUrl = event.target.result;
+                addThumbnailToGallery(imgUrl);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    function addThumbnailToGallery(url) {
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = "Uploaded Soccer Picture";
+        img.className = 'thumb';
+        img.style.opacity = '0';
+        img.style.transform = 'scale(0.8)';
+        
+        // Add to the beginning of the grid
+        galleryGrid.prepend(img);
+        
+        // Animation
+        setTimeout(() => {
+            img.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            img.style.opacity = '1';
+            img.style.transform = 'scale(1)';
+        }, 10);
+    }
+
+    // --- Close Modal on Outside Click ---
+    window.addEventListener('click', (e) => {
+        if (e.target === verifyModal) {
+            verifyModal.style.display = 'none';
+        }
+    });
+
+    // --- Dynamic News Feed (Mock) ---
+    // In a real app, this would fetch from an API
+    console.log("Soccer Site Initialized - Anti-Bot Security Active");
 });
