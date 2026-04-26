@@ -11,45 +11,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header Banner: San Diego background + soccer balls -->
     <header class="hero-header">
+        <img src="san_diego.jpg" alt="San Diego Skyline" class="header-bg">
         <div class="header-overlay"></div>
-        <div class="soccer-balls-container">
-            <div class="ball ball-1"></div>
-            <div class="ball ball-2"></div>
-            <div class="ball ball-3"></div>
-        </div>
+        <img src="soccer_ball.png" alt="" class="ball ball-1">
+        <img src="soccer_ball.png" alt="" class="ball ball-2">
+        <img src="soccer_ball.png" alt="" class="ball ball-3">
     </header>
 
     <main class="container">
         <!-- Column 1: Recent News -->
         <section class="column">
             <h2 class="column-title">Recent News</h2>
-            
+
             <div class="news-subsection">
-                <h3 class="subsection-title">San Diego News</h3>
-                <div id="sd-news-list" class="news-list">
-                    <div class="news-card">
-                        <div class="news-date">APR 26, 2026</div>
-                        <div class="news-headline">San Diego Loyal vs. Phoenix Rising: Match Preview</div>
-                    </div>
-                    <div class="news-card">
+                <h3 class="subsection-title">⚽ San Diego News</h3>
+                <div class="news-list">
+                    <a href="https://www.sandiegowavefc.com" class="news-card" target="_blank">
                         <div class="news-date">APR 25, 2026</div>
-                        <div class="news-headline">Youth Soccer Clinics Opening in Balboa Park</div>
-                    </div>
+                        <div class="news-headline">SD Wave FC Top NWSL Standings With Club-Record Five-Game Win Streak</div>
+                    </a>
+                    <a href="https://www.sandiegowavefc.com" class="news-card" target="_blank">
+                        <div class="news-date">APR 25, 2026</div>
+                        <div class="news-headline">Wave Defeat Denver Summit FC 3-2 in Dramatic Comeback Victory</div>
+                    </a>
+                    <a href="https://www.sandiegofc.com" class="news-card" target="_blank">
+                        <div class="news-date">APR 25, 2026</div>
+                        <div class="news-headline">San Diego FC Falls 2-1 to Portland Timbers at Home</div>
+                    </a>
+                    <a href="https://www.sandiegofc.com" class="news-card" target="_blank">
+                        <div class="news-date">APR 23, 2026</div>
+                        <div class="news-headline">San Diego FC Academy Adds U16 Team for MLS NEXT Season</div>
+                    </a>
+                    <a href="https://www.maslsoccer.com" class="news-card" target="_blank">
+                        <div class="news-date">APR 23, 2026</div>
+                        <div class="news-headline">MASL Issues Disciplinary Actions After SD Sockers Postgame Incident</div>
+                    </a>
                 </div>
             </div>
 
             <div class="news-subsection">
-                <h3 class="subsection-title">Global Soccer News</h3>
-                <div id="global-news-list" class="news-list">
-                    <div class="news-card">
-                        <div class="news-date">APR 26, 2026</div>
-                        <div class="news-headline">Champions League Semi-Finals: Predicting the Final Two</div>
-                    </div>
-                    <div class="news-card">
+                <h3 class="subsection-title">🌍 Global Soccer News</h3>
+                <div class="news-list">
+                    <a href="https://www.premierleague.com" class="news-card" target="_blank">
                         <div class="news-date">APR 25, 2026</div>
-                        <div class="news-headline">Transfer Rumors: Top Strikers on the Move this Summer</div>
-                    </div>
+                        <div class="news-headline">Arsenal Reclaim Top Spot With 1-0 Win Over Newcastle; Eze Scores</div>
+                    </a>
+                    <a href="https://www.chelseafc.com" class="news-card" target="_blank">
+                        <div class="news-date">APR 26, 2026</div>
+                        <div class="news-headline">Chelsea Beat Leeds 1-0 to Reach FA Cup Final; Face Man City May 16</div>
+                    </a>
+                    <a href="https://www.fifa.com/worldcup" class="news-card" target="_blank">
+                        <div class="news-date">APR 26, 2026</div>
+                        <div class="news-headline">2026 FIFA World Cup: Host Cities Ramp Up Preparations Across the US</div>
+                    </a>
+                    <a href="https://www.uefa.com" class="news-card" target="_blank">
+                        <div class="news-date">APR 2026</div>
+                        <div class="news-headline">Champions League Final Set for May 30 at Puskás Aréna in Budapest</div>
+                    </a>
+                    <a href="https://www.si.com" class="news-card" target="_blank">
+                        <div class="news-date">APR 25, 2026</div>
+                        <div class="news-headline">Tottenham Secure First League Win of 2026 But Relegation Battle Continues</div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -72,19 +96,18 @@
         <section class="column">
             <h2 class="column-title">Recent Gallery</h2>
             <div id="gallery-grid" class="gallery-grid">
-                <!-- Thumbnails will be injected by JS -->
                 <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&q=80&w=400" alt="Soccer 1" class="thumb">
                 <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=400" alt="Soccer 2" class="thumb">
                 <img src="https://images.unsplash.com/photo-1510567198184-c748466c1445?auto=format&fit=crop&q=80&w=400" alt="Soccer 3" class="thumb">
                 <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?auto=format&fit=crop&q=80&w=400" alt="Soccer 4" class="thumb">
             </div>
-            
+
             <div class="upload-section">
                 <button id="upload-trigger" class="btn-upload">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
                     </svg>
-                    Upload Soccer Picture
+                    Upload Soccer Picture / Video
                 </button>
             </div>
         </section>
@@ -94,14 +117,14 @@
     <div id="verify-modal" class="modal">
         <div class="modal-content">
             <h3 class="modal-title">Human Verification</h3>
-            <p class="modal-desc">Please slide to unlock the upload feature.</p>
-            
+            <p class="modal-desc">Slide to unlock the upload feature.</p>
+
             <div id="verify-container" class="verify-container">
                 <div class="verify-fill"></div>
-                <div class="verify-text">Slide to verify</div>
+                <div class="verify-text">Slide to verify →</div>
                 <div id="verify-handle" class="verify-handle"></div>
             </div>
-            
+
             <input type="file" id="file-input" hidden accept="image/*,video/*">
         </div>
     </div>
