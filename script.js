@@ -74,34 +74,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Mock Upload Logic ---
 
-    fileInput.addEventListener('change', (e) => {
+    fileInput.addEventListener('change', async (e) => {
         const file = e.target.files[0];
-        if (file) {
+        if (!file) return;
+
+        const isVideo = file.type.startsWith('video/');
+        
+        if (isVideo) {
+            try {
+                const duration = await getVideoDuration(file);
+                if (duration > 15) {
+                    alert("Video is too long! Please limit uploads to 15 seconds.");
+                    return;
+                }
+                const url = URL.createObjectURL(file);
+                addVideoToGallery(url);
+            } catch (err) {
+                alert("Error processing video.");
+            }
+        } else {
             const reader = new FileReader();
             reader.onload = (event) => {
                 const imgUrl = event.target.result;
-                addThumbnailToGallery(imgUrl);
+                addImageToGallery(imgUrl);
             };
             reader.readAsDataURL(file);
         }
     });
 
-    function addThumbnailToGallery(url) {
+    function getVideoDuration(file) {
+        return new Promise((resolve, reject) => {
+            const video = document.createElement('video');
+            video.preload = 'metadata';
+            video.onloadedmetadata = () => {
+                window.URL.revokeObjectURL(video.src);
+                resolve(video.duration);
+            };
+            video.onerror = () => reject("Error loading video metadata");
+            video.src = URL.createObjectURL(file);
+        });
+    }
+
+    function addImageToGallery(url) {
         const img = document.createElement('img');
         img.src = url;
         img.alt = "Uploaded Soccer Picture";
         img.className = 'thumb';
-        img.style.opacity = '0';
-        img.style.transform = 'scale(0.8)';
+        animateNewItem(img);
+    }
+
+    function addVideoToGallery(url) {
+        const video = document.createElement('video');
+        video.src = url;
+        video.className = 'thumb';
+        video.muted = true;
+        video.loop = true;
+        video.onmouseover = () => video.play();
+        video.onmouseout = () => video.pause();
+        animateNewItem(video);
+    }
+
+    function animateNewItem(el) {
+        el.style.opacity = '0';
+        el.style.transform = 'scale(0.8)';
+        galleryGrid.prepend(el);
         
-        // Add to the beginning of the grid
-        galleryGrid.prepend(img);
-        
-        // Animation
         setTimeout(() => {
-            img.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            img.style.opacity = '1';
-            img.style.transform = 'scale(1)';
+            el.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            el.style.opacity = '1';
+            el.style.transform = 'scale(1)';
         }, 10);
     }
 

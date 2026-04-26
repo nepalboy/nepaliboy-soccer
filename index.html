@@ -11,32 +11,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">SOCCER.NEPALIBOY</div>
-        <div class="domain-tag">San Diego, CA</div>
+    <header class="hero-header">
+        <div class="header-overlay"></div>
+        <div class="soccer-balls-container">
+            <div class="ball ball-1"></div>
+            <div class="ball ball-2"></div>
+            <div class="ball ball-3"></div>
+        </div>
+        <div class="header-content">
+            <div class="logo">SOCCER.NEPALIBOY</div>
+            <div class="domain-tag">San Diego, CA</div>
+        </div>
     </header>
 
     <main class="container">
         <!-- Column 1: Recent News -->
         <section class="column">
             <h2 class="column-title">Recent News</h2>
-            <div id="news-list" class="news-list">
-                <!-- News items will be injected by JS -->
-                <div class="news-card">
-                    <div class="news-date">APR 26, 2026</div>
-                    <div class="news-headline">Champions League Semi-Finals: Predicting the Final Two</div>
+            
+            <div class="news-subsection">
+                <h3 class="subsection-title">San Diego News</h3>
+                <div id="sd-news-list" class="news-list">
+                    <div class="news-card">
+                        <div class="news-date">APR 26, 2026</div>
+                        <div class="news-headline">San Diego Loyal vs. Phoenix Rising: Match Preview</div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-date">APR 25, 2026</div>
+                        <div class="news-headline">Youth Soccer Clinics Opening in Balboa Park</div>
+                    </div>
                 </div>
-                <div class="news-card">
-                    <div class="news-date">APR 25, 2026</div>
-                    <div class="news-headline">Transfer Rumors: Top Strikers on the Move this Summer</div>
-                </div>
-                <div class="news-card">
-                    <div class="news-date">APR 24, 2026</div>
-                    <div class="news-headline">New Training Facility Unveiled for Local Youth Academy</div>
-                </div>
-                <div class="news-card">
-                    <div class="news-date">APR 23, 2026</div>
-                    <div class="news-headline">Analyzing the Impact of VAR in Recent League Matches</div>
+            </div>
+
+            <div class="news-subsection">
+                <h3 class="subsection-title">Global Soccer News</h3>
+                <div id="global-news-list" class="news-list">
+                    <div class="news-card">
+                        <div class="news-date">APR 26, 2026</div>
+                        <div class="news-headline">Champions League Semi-Finals: Predicting the Final Two</div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-date">APR 25, 2026</div>
+                        <div class="news-headline">Transfer Rumors: Top Strikers on the Move this Summer</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -89,7 +106,7 @@
                 <div id="verify-handle" class="verify-handle"></div>
             </div>
             
-            <input type="file" id="file-input" hidden accept="image/*">
+            <input type="file" id="file-input" hidden accept="image/*,video/*">
         </div>
     </div>
 
