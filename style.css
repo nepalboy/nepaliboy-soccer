@@ -121,6 +121,18 @@ main.container {
     gap: 12px;
 }
 
+.news-list-horizontal {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+}
+
+.news-list-horizontal .news-card {
+    flex: 0 0 240px;
+    scroll-snap-align: start;
+}
+
 .news-card {
     display: block;
     text-decoration: none;
