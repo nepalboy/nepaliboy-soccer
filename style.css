@@ -121,31 +121,36 @@ main.container {
     gap: 12px;
 }
 
-/* ======== GLOBAL NEWS STRIP (full width) ======== */
-.global-news-section {
+/* ======== FULL-WIDTH NEWS STRIPS ======== */
+.global-news-section,
+.transfer-news-section {
     max-width: 1600px;
     margin: 0 auto;
     padding: 10px 5% 40px;
 }
 
-.global-news-section .column-title {
+.global-news-section .column-title,
+.transfer-news-section .column-title {
     margin-bottom: 16px;
 }
 
-.global-news-grid {
+.global-news-grid,
+.transfer-news-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 12px;
 }
 
 @media (max-width: 1100px) {
-    .global-news-grid {
+    .global-news-grid,
+    .transfer-news-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .global-news-grid {
+    .global-news-grid,
+    .transfer-news-grid {
         grid-template-columns: 1fr 1fr;
     }
 }
