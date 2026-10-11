@@ -283,13 +283,13 @@ main.container {
 
 .btn-upload {
     width: 100%;
-    padding: 16px;
+    padding: 10px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     border: none;
-    border-radius: 16px;
+    border-radius: 12px;
     color: #fff;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-family: 'Outfit', sans-serif;
     cursor: pointer;
     display: flex;
