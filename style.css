@@ -70,8 +70,8 @@ body {
 main.container {
     display: grid;
     grid-template-columns: 300px 1fr 300px;
-    gap: 30px;
-    padding: 30px 5%;
+    gap: 20px;
+    padding: 18px 5%;
     max-width: 1600px;
     margin: 0 auto;
 }
@@ -79,7 +79,7 @@ main.container {
 .column {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
 }
 
 .column-title {
@@ -103,7 +103,7 @@ main.container {
 
 /* ======== NEWS ======== */
 .news-subsection {
-    margin-bottom: 25px;
+    margin-bottom: 16px;
 }
 
 .subsection-title {
@@ -126,12 +126,12 @@ main.container {
 .transfer-news-section {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 10px 5% 40px;
+    padding: 4px 5% 24px;
 }
 
 .global-news-section .column-title,
 .transfer-news-section .column-title {
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
 
 .global-news-grid,
