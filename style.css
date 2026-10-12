@@ -35,7 +35,7 @@ body {
 
 /* ======== HEADER BANNER ======== */
 .hero-header {
-    height: 120px;
+    height: 280px;
     position: relative;
     overflow: hidden;
     border-bottom: 2px solid var(--primary);
@@ -436,6 +436,6 @@ main.container {
         font-size: 1.25rem;
     }
     .hero-header {
-        height: 80px;
+        height: 150px;
     }
 }
