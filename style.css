@@ -427,6 +427,7 @@ main.container {
     color: inherit;
     background: var(--card-bg);
     border: 1px solid var(--glass-border);
+    border-top: 4px solid var(--primary);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--card-shadow);
